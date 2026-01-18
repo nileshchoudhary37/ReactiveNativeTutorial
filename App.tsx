@@ -1,75 +1,25 @@
 import {
   StyleSheet,
-  Image,
-  Button,
-  Alert,
-  Pressable,
-  TouchableOpacity,
-  ScrollView,
+  ActivityIndicator,
+  View,
+  Text,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
-  const onButtonPress = () => Alert.alert("Button Pressed!");
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ backgroundColor:"red"}}
-      >
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <Image
-          source={require("./assets/splash-icon.png")}
-          style={styles.image1}
-        ></Image>
-        <TouchableOpacity>
-          <Image
-            source={require("./assets/splash-icon.png")}
-            style={styles.image1}
-          ></Image>
-        </TouchableOpacity>
-        <Pressable onPress={onButtonPress}>
-          <Image
-            source={{ uri: "https://picsum.photos/200/300" }}
-            style={styles.image2}
-            blurRadius={4}
-          />
-        </Pressable>
-        <Button title="Press Me" onPress={onButtonPress} />
-      </ScrollView>
+      <ActivityIndicator color={"green"}></ActivityIndicator>
+      <ActivityIndicator size={"large"} color={"blue"}></ActivityIndicator>
+      <View style={styles.view1}>
+        <Text style={styles.text}> Hello </Text>
+        <Text style={styles.text}> Text 2 </Text>
+      </View>
+      <View style={styles.view2}>
+        <View style={styles.childView}></View>
+      </View>
+      <View style={styles.view3}></View>
     </SafeAreaView>
   );
 }
@@ -78,14 +28,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    justifyContent: "center",
   },
-  image1: {
-    width: 200,
+  view1:{
     height: 200,
-  },
-  image2: {
     width: 200,
-    height: 200,
-    borderRadius: 100,
+    backgroundColor: "red",
   },
+  view2:{
+    height: 150,
+    width: 150,
+    backgroundColor: "black",
+    marginLeft: 20,
+    margin: 100,
+    padding: 20,
+  },
+  view3:{
+    height: 150,
+    width: 150,
+    backgroundColor: "yellow",
+    marginLeft: 100,
+  },
+  childView:{
+    height: 50,
+    width: 50,
+    backgroundColor: "red"
+  },
+  text:{
+    fontSize: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: "bold",
+  }
 });
