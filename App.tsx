@@ -1,25 +1,60 @@
-import {
-  StyleSheet,
-  ActivityIndicator,
-  View,
-  Text,
-} from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {scale, verticalScale, s, vs} from 'react-native-size-matters';
 
 export default function App() {
-
+  //Percentage
+  //Dimensions
+  //Libraries for responsive
+  const PHONE_WIDTH = Dimensions.get("screen").width;
+  const PHONE_HEIGHT = Dimensions.get("screen").height;
   return (
     <SafeAreaView style={styles.container}>
-      <ActivityIndicator color={"green"}></ActivityIndicator>
-      <ActivityIndicator size={"large"} color={"blue"}></ActivityIndicator>
-      <View style={styles.view1}>
-        <Text style={styles.text}> Hello </Text>
-        <Text style={styles.text}> Text 2 </Text>
+      <View
+        style={{
+          backgroundColor: "white",
+          flex: 1,
+          // flexDirection: "column",  //this main axis is vertical
+          // justifyContent: "center",  //main axis is vertical
+          // alignItems: "center",      //cross axis is horizontal
+           flexDirection: "row",  //this main axis is horizontal
+          justifyContent: "center",  //main axis is horizontal
+          alignItems: "center",      //cross axis is vertical
+          // alignItems: "baseline",
+          // alignItems: "flex-start"
+          // alignItems: "flex-end"
+          // justifyContent: "flex-end"
+          // justifyContent: "space-between"
+          // justifyContent: "space-around"
+          // flexWrap: "wrap",
+          // alignContent: "center",
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "tomato",
+            width: scale(90),           //responsive size
+            height: verticalScale(90),  //responsive size
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: "green",
+            width: s(90),
+            height: vs(90),
+            top: 30,
+            left: 30,
+            position: "absolute" //default is relative
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: "yellow",
+            width: s(90),
+            height: vs(90),
+          }}
+        />
       </View>
-      <View style={styles.view2}>
-        <View style={styles.childView}></View>
-      </View>
-      <View style={styles.view3}></View>
     </SafeAreaView>
   );
 }
@@ -30,34 +65,4 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
   },
-  view1:{
-    height: 200,
-    width: 200,
-    backgroundColor: "red",
-  },
-  view2:{
-    height: 150,
-    width: 150,
-    backgroundColor: "black",
-    marginLeft: 20,
-    margin: 100,
-    padding: 20,
-  },
-  view3:{
-    height: 150,
-    width: 150,
-    backgroundColor: "yellow",
-    marginLeft: 100,
-  },
-  childView:{
-    height: 50,
-    width: 50,
-    backgroundColor: "red"
-  },
-  text:{
-    fontSize: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    fontWeight: "bold",
-  }
 });
