@@ -1,19 +1,28 @@
-import {View, Text, Button} from 'react-native';
-import { useState } from 'react';
+import { Button, Modal, Text, View } from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function App() {
-  const [count, setCount]= useState(20)
+  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={{
-      backgroundColor: "white",
-      flex: 1,
-      justifyContent: "center",
-    }}>
-      <Button title="Increment Count" onPress={()=> setCount(count+1)} />
-      <Text style={{ fontSize: 100}}>{count}</Text>
-      <Button title="Decrement Count" onPress={()=> setCount(count-1)} />
-    </View>
-);
-   
-
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "gold",
+        justifyContent: "center",
+      }}
+    >
+      <View style={{alignItems: "center" }}>
+        <Button title="Show Modal" onPress={() => setModalVisible(true)} />
+      </View>
+      <Modal visible={modalVisible} animationType="slide">
+        <Text style={{ marginTop: 50, fontSize: 50 }}>Modal is Opened</Text>
+        <View style={{alignItems: "center", justifyContent: "center", flex: 1 }}>
+        <Button title="Show Modal" onPress={() => setModalVisible(false)} />
+          <AntDesign name="close-circle" size={44} color="red" onPress={() => setModalVisible(false)} />
+      </View>
+      </Modal>
+    </SafeAreaView>
+  );
 }
