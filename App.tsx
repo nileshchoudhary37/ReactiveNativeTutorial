@@ -1,68 +1,19 @@
-import { StyleSheet, View, Dimensions } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import {scale, verticalScale, s, vs} from 'react-native-size-matters';
+import {View, Text, Button} from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
-  //Percentage
-  //Dimensions
-  //Libraries for responsive
-  const PHONE_WIDTH = Dimensions.get("screen").width;
-  const PHONE_HEIGHT = Dimensions.get("screen").height;
+  const [count, setCount]= useState(20)
   return (
-    <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          backgroundColor: "white",
-          flex: 1,
-          // flexDirection: "column",  //this main axis is vertical
-          // justifyContent: "center",  //main axis is vertical
-          // alignItems: "center",      //cross axis is horizontal
-           flexDirection: "row",  //this main axis is horizontal
-          justifyContent: "center",  //main axis is horizontal
-          alignItems: "center",      //cross axis is vertical
-          // alignItems: "baseline",
-          // alignItems: "flex-start"
-          // alignItems: "flex-end"
-          // justifyContent: "flex-end"
-          // justifyContent: "space-between"
-          // justifyContent: "space-around"
-          // flexWrap: "wrap",
-          // alignContent: "center",
-        }}
-      >
-        <View
-          style={{
-            backgroundColor: "tomato",
-            width: scale(90),           //responsive size
-            height: verticalScale(90),  //responsive size
-          }}
-        />
-        <View
-          style={{
-            backgroundColor: "green",
-            width: s(90),
-            height: vs(90),
-            top: 30,
-            left: 30,
-            position: "absolute" //default is relative
-          }}
-        />
-        <View
-          style={{
-            backgroundColor: "yellow",
-            width: s(90),
-            height: vs(90),
-          }}
-        />
-      </View>
-    </SafeAreaView>
-  );
-}
+    <View style={{
+      backgroundColor: "white",
+      flex: 1,
+      justifyContent: "center",
+    }}>
+      <Button title="Increment Count" onPress={()=> setCount(count+1)} />
+      <Text style={{ fontSize: 100}}>{count}</Text>
+      <Button title="Decrement Count" onPress={()=> setCount(count-1)} />
+    </View>
+);
+   
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    justifyContent: "center",
-  },
-});
+}
